@@ -45,25 +45,21 @@ const engineerQuestions = [
     type: "prompt",
     message: "What is this engineer's name?",
     name: "name",
-    when: (answers) => answers.employeeRole === "Add an Engineer",
   },
   {
     type: "prompt",
     message: "What is this engineer's id?",
     name: "id",
-    when: (answers) => answers.employeeRole === "Add an Engineer",
   },
   {
     type: "prompt",
     message: "What is this engineer's email?",
     name: "email",
-    when: (answers) => answers.employeeRole === "Add an Engineer",
   },
   {
     type: "prompt",
     message: "What is this engineer's GitHub username?",
     name: "github",
-    when: (answers) => answers.employeeRole === "Add an Engineer",
   },
 ];
 const internQuestions = [
@@ -71,31 +67,27 @@ const internQuestions = [
     type: "prompt",
     message: "What is this intern's name?",
     name: "name",
-    when: (answers) => answers.employeeRole === "Add an Intern",
   },
   {
     type: "prompt",
     message: "What is this intern's id?",
     name: "id",
-    when: (answers) => answers.employeeRole === "Add an Intern",
   },
   {
     type: "prompt",
     message: "What is this intern's email?",
     name: "email",
-    when: (answers) => answers.employeeRole === "Add an Intern",
   },
   {
     type: "prompt",
     message: "Where does this intern attend school?",
     name: "gitHub",
-    when: (answers) => answers.employeeRole === "Add an Intern",
   },
 ];
 
-// to begin, pass "node index.js team-build" in the terminal
+// to begin, pass "node index.js build-team" in the terminal
 function init() {
-  if (process.argv[2] === "team-build") {
+  if (process.argv[2] === "build-team") {
     promptForManager();
   }
 }
@@ -113,7 +105,7 @@ function promptForManager() {
     );
     // add manager object to team array
     team.push(manager);
-    console.log(team);
+    // prompt to add another employee
     promptForEmployee();
   });
 }
