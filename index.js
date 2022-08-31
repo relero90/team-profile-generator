@@ -1,13 +1,12 @@
 const inquirer = require("inquirer");
-
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 
-const workers = [];
+const team = [];
 
 // Inquirer Prompt Arrays
-const employeeAddQuestion = [
+const addEmployeeQuestion = [
   {
     type: "list",
     message: "What type of team member would you like to add?",
@@ -94,64 +93,70 @@ const internQuestions = [
   },
 ];
 
+// to begin, pass "node index.js team-build" in the terminal
+function init() {
+  if (process.argv[2] === "team-build") {
+    promptForManager();
+  }
+}
+init();
+
 function promptForManager() {
+  // prompt with managerQuestions
   inquirer.prompt(managerQuestions).then((data) => {
+    // create a new manager object using the user's input data
     const manager = new Manager(
       data.name,
       data.id,
       data.email,
       data.officePhone
     );
-    workers.push(manager);
-    console.log(workers);
+    // add manager object to team array
+    team.push(manager);
+    console.log(team);
+    promptForEmployee();
   });
 }
 
 function promptForEmployee() {
-  inquirer.prompt(employeeAddQuestion).then((data) => {
+  inquirer.prompt(addEmployeeQuestion).then((data) => {
     switch (data.employeeAdd) {
       case "Add an Engineer":
         // prompt with engineerQuestions
         inquirer.prompt(engineerQuestions).then((data) => {
-          // create new engineer object with user input values
+          // create new engineer object with user input data
           const engineer = new Engineer(
             data.name,
             data.id,
             data.email,
             data.github
           );
-          // add engineer object to workers array
-          workers.push(engineer);
-          console.log(workers);
+          // add engineer object to team array
+          team.push(engineer);
+          console.log(team);
+          promptForEmployee();
         });
         break;
       case "Add an Intern":
         // prompt with internQuestions
         inquirer.prompt(internQuestions).then((data) => {
-          // create new intern object with user input values
+          // create new intern object with user input data
           const intern = new Intern(
             data.name,
             data.id,
             data.email,
             data.school
           );
-          // add intern object to workers array
-          workers.push(intern);
-          console.log(workers);
+          // add intern object to team array
+          team.push(intern);
+          console.log(team);
+          promptForEmployee();
         });
         break;
       default:
         console.log("done!");
-        // exit the application and generate HTML based on user inputs
-        // fs.writeFile("./dist/index.html", markdownPull, (error) => error ? console.error(error) : console.log("Success!")
+      // exit the application and generate HTML based on user inputs
+      // fs.writeFile("./dist/index.html", HTMLtextstring, (error) => error ? console.error(error) : console.log("Success!")
     }
   });
 }
-
-function init() {
-  if (process.argv[2] === "go") {
-    promptForManager();
-    promptForEmployee();
-  }
-}
-init();
