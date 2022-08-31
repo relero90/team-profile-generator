@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
@@ -151,4 +152,12 @@ function promptForEmployee() {
       // fs.writeFile("./dist/index.html", HTMLtextstring, (error) => error ? console.error(error) : console.log("Success!")
     }
   });
+}
+
+function renderEmployeeCards() {
+  // get captured array of employee objects into HTML card string
+}
+
+function renderFinalHTML() {
+  // generate HTML string with employee cards included
 }
