@@ -118,6 +118,7 @@ function promptForManager() {
 }
 
 function promptForEmployee() {
+  // ask the addEmployeeQuestion - present questions based on user response
   inquirer.prompt(addEmployeeQuestion).then((data) => {
     switch (data.employeeAdd) {
       case "Add an Engineer":
@@ -132,7 +133,7 @@ function promptForEmployee() {
           );
           // add engineer object to team array
           team.push(engineer);
-          console.log(team);
+          // prompt to add another employee
           promptForEmployee();
         });
         break;
@@ -148,57 +149,19 @@ function promptForEmployee() {
           );
           // add intern object to team array
           team.push(intern);
-          console.log(team);
+          // prompt to add another employee
           promptForEmployee();
         });
         break;
       default:
-        renderEmployeeCards(team);
-      // exit the application and generate HTML based on user inputs
-      // fs.writeFile("./dist/index.html", HTMLtextstring, (error) => error ? console.error(error) : console.log("Success!")
+        console.log(
+          "Success!\nCheck the dist/ directory for your index.html file."
+        );
+        renderNewHTML(team);
     }
   });
 }
 
-function renderEmployeeCards(team) {
+function renderNewHTML(team) {
   fs.writeFileSync(distPath, htmlTemplate(team), "utf-8");
-}
-
-function renderFinalHTML(cards) {
-  // generate HTML string with employee cards included
-  const htmlStart = `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <!-- Style Link -->
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-        crossorigin="anonymous"
-      />
-      <!-- Icons from FontAwesome -->
-      <script
-        src="https://kit.fontawesome.com/d706540582.js"
-        crossorigin="anonymous"
-      ></script>
-      <title>Team Profiles</title>
-    </head>
-    <body>
-      <header
-        class="d-flex justify-content-center align-items-center p-5 bg-danger"
-      >
-        <h1 class="text-light">Our Team</h1>
-      </header>
-      <main>
-        <section class="m-5 d-flex flex-wrap justify-content-around">`;
-
-  const htmlEnd = `      
-        </section>
-    </main>
-  </body>
-</html>`;
 }
