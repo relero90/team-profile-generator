@@ -88,7 +88,7 @@ const internQuestions = [
   {
     type: "prompt",
     message: "Where does this intern attend school?",
-    name: "gitHub",
+    name: "school",
   },
 ];
 

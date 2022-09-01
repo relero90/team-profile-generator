@@ -1,4 +1,5 @@
-const createTeam = (team) => {
+// function to create a single string of all team cards
+const createTeamCards = (team) => {
   // function to create a card for a manager
   const createManager = (manager) => {
     return `
@@ -112,7 +113,7 @@ module.exports = (team) => {
         </header>
         <main>
             <section class="m-5 d-flex flex-wrap justify-content-around">
-                ${createTeam(team)}
+                ${createTeamCards(team)}
             </section>
         </main>
     </body>
