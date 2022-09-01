@@ -96,9 +96,10 @@ const internQuestions = [
 // to begin, pass "node index.js build-team" in the terminal
 function init() {
   if (process.argv[2] === "build-team") {
+    console.log(chalk.magenta("Welcome to the team profile builder."));
     console.log(
-      chalk.magenta(
-        "Welcome to the team profile builder.\nAnswer the prompts that follow to automatically generate a profile webpage for your team."
+      chalk.blue(
+        "Answer the prompts that follow to automatically generate a profile webpage for your team."
       )
     );
     promptForManager();
@@ -109,15 +110,6 @@ init();
 function promptForManager() {
   // prompt with managerQuestions
   inquirer.prompt(managerQuestions).then((data) => {
-    // validate email
-    if (!data.email.includes("@") || !data.email.includes(".")) {
-      console.log(
-        chalk.red("Employee email must follow the format:\n___ @ ___ . ___")
-      );
-      promptForManager();
-      return;
-    }
-
     // create a new manager object using the user's input data
     const manager = new Manager(
       data.name,
@@ -137,14 +129,6 @@ function promptForEmployee() {
   inquirer.prompt(addEmployeeQuestion).then((data) => {
     switch (data.employeeAdd) {
       case "Add an Engineer":
-        // validate email
-        if (!data.email.includes("@") || !data.email.includes(".")) {
-          console.log(
-            chalk.red("Employee email must follow the format:\n___ @ ___ . ___")
-          );
-          promptForEmployee();
-          return;
-        }
         // prompt with engineerQuestions
         inquirer.prompt(engineerQuestions).then((data) => {
           // create new engineer object with user input data
@@ -163,16 +147,6 @@ function promptForEmployee() {
       case "Add an Intern":
         // prompt with internQuestions
         inquirer.prompt(internQuestions).then((data) => {
-          // validate email
-          if (!data.email.includes("@") || !data.email.includes(".")) {
-            console.log(
-              chalk.red(
-                "Employee email must follow the format:\n___ @ ___ . ___"
-              )
-            );
-            promptForEmployee();
-            return;
-          }
           // create new intern object with user input data
           const intern = new Intern(
             data.name,
