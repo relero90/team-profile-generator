@@ -20,7 +20,7 @@ This is a command line app designed to dynamically create a pre-styled profile w
 ---
 
 View the following demonstration video to see the team profile generator in action:
-[Demo Video](#)
+[Demo Video](https://watch.screencastify.com/v/gIUyzqZ6ByoJp3R3aJd8)
 
 ## Usage Recommendations
 
