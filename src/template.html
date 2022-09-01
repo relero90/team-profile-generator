@@ -29,52 +29,51 @@
         <!-- Manager Card -->
         <div class="card mt-3 shadow" style="width: 18rem">
           <div class="card-body bg-primary text-light">
+            <h3 class="text-center" id="name">${manager.getName()}</h3>
             <div class="d-flex">
               <i class="fa-solid fa-mug-hot m-2"></i>
-              <h5 class="card-title">Manager</h5>
+              <h5 class="card-title">${manager.getRole()}</h5>
             </div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID#: <span id="IDText"></span></li>
-            <li class="list-group-item">Email: <span id="emailText"></span></li>
+            <li class="list-group-item">ID#: ${manager.getId()}</li>
+            <li class="list-group-item">Email: ${manager.getEmail()}</li>
             <li class="list-group-item">
-              Office Phone: <span id="officeNumText"></span>
+              Office Phone: ${manager.getOfficeNumber()}
             </li>
           </ul>
         </div>
         <!-- Engineer Card -->
         <div class="card mt-3 shadow" style="width: 18rem">
           <div class="card-body bg-primary text-light">
+            <h3 class="text-center" id="name">${engineer.getName()}</h3>
             <div class="d-flex">
               <i class="fa-solid fa-glasses m-2"></i>
-              <h5 class="card-title">Engineer</h5>
+              <h5 class="card-title">${engineer.getRole()}</h5>
             </div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID#: <span id="IDText"></span></li>
-            <li class="list-group-item">Email: <span id="emailText"></span></li>
-            <li class="list-group-item">
-              GitHub: <span id="officeNumText"></span>
-            </li>
+            <li class="list-group-item">ID#: ${engineer.getId()}</li>
+            <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+            <li class="list-group-item">GitHub: ${engineer.getGitHub()}</li>
           </ul>
         </div>
         <!-- Intern Card -->
         <div class="card mt-3 shadow" style="width: 18rem">
           <div class="card-body bg-primary text-light">
-            <h5 class="card-title"></h5>
+            <h3 class="text-center" id="name">${intern.getName()}</h3>
             <div class="d-flex">
               <i class="fa-solid fa-graduation-cap m-2"></i>
-              <h5 class="card-title">Intern</h5>
+              <h5 class="card-title">${intern.getRole()}</h5>
             </div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID#: <span id="IDText"></span></li>
-            <li class="list-group-item">Email: <span id="emailText"></span></li>
-            <li class="list-group-item">
-              School: <span id="officeNumText"></span>
-            </li>
+            <li class="list-group-item">ID#: ${intern.getId()}</li>
+            <li class="list-group-item">Email: ${intern.getEmail()}</li>
+            <li class="list-group-item">School: ${intern.getSchool()}</li>
           </ul>
         </div>
+        <!-- end of team member cards -->
       </section>
     </main>
   </body>

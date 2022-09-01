@@ -1,8 +1,14 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require("path");
+
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const htmlTemplate = require("./src/htmlTemplate.js");
+
+const DIST_DIR = path.resolve(__dirname, "dist");
+const distPath = path.join(DIST_DIR, "index.html");
 
 const team = [];
 
@@ -147,17 +153,52 @@ function promptForEmployee() {
         });
         break;
       default:
-        console.log("done!");
+        renderEmployeeCards(team);
       // exit the application and generate HTML based on user inputs
       // fs.writeFile("./dist/index.html", HTMLtextstring, (error) => error ? console.error(error) : console.log("Success!")
     }
   });
 }
 
-function renderEmployeeCards() {
-  // get captured array of employee objects into HTML card string
+function renderEmployeeCards(team) {
+  fs.writeFileSync(distPath, htmlTemplate(team), "utf-8");
 }
 
-function renderFinalHTML() {
+function renderFinalHTML(cards) {
   // generate HTML string with employee cards included
+  const htmlStart = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <!-- Style Link -->
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        crossorigin="anonymous"
+      />
+      <!-- Icons from FontAwesome -->
+      <script
+        src="https://kit.fontawesome.com/d706540582.js"
+        crossorigin="anonymous"
+      ></script>
+      <title>Team Profiles</title>
+    </head>
+    <body>
+      <header
+        class="d-flex justify-content-center align-items-center p-5 bg-danger"
+      >
+        <h1 class="text-light">Our Team</h1>
+      </header>
+      <main>
+        <section class="m-5 d-flex flex-wrap justify-content-around">`;
+
+  const htmlEnd = `      
+        </section>
+    </main>
+  </body>
+</html>`;
 }
