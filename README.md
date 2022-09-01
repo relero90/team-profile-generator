@@ -26,10 +26,10 @@ View the following demonstration video to see the team profile generator in acti
 
 ---
 
-To use this app to create your own employee profile page, clone the repository code to your local device. From the command line, run `npm i` and then run `node index.js build-team`
+To use this app to create your own employee profile page, clone the repository code to your local device. From the command line, pass `node index.js build-team`
 
 ## Testing
 
 ---
 
-To test this app, run: `npm run tests`
+To test this app, pass: `npm run tests`
