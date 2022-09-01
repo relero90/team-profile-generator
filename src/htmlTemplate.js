@@ -6,7 +6,7 @@ const createTeamCards = (team) => {
 <div class="card mt-3 shadow" style="width: 18rem">
     <div class="card-body bg-primary text-light">
         <h3 class="text-center" id="name">${manager.getName()}</h3>
-        <div class="d-flex">
+        <div class="d-flex justify-content-center">
             <i class="fa-solid fa-mug-hot m-2"></i>
             <h5 class="card-title">${manager.getRole()}</h5>
         </div>
@@ -24,7 +24,7 @@ const createTeamCards = (team) => {
 <div class="card mt-3 shadow" style="width: 18rem">
     <div class="card-body bg-primary text-light">
         <h3 class="text-center" id="name">${engineer.getName()}</h3>
-        <div class="d-flex">
+        <div class="d-flex justify-content-center">
             <i class="fa-solid fa-glasses m-2"></i>
             <h5 class="card-title">${engineer.getRole()}</h5>
         </div>
@@ -42,7 +42,7 @@ const createTeamCards = (team) => {
 <div class="card mt-3 shadow" style="width: 18rem">
     <div class="card-body bg-primary text-light">
         <h3 class="text-center" id="name">${intern.getName()}</h3>
-        <div class="d-flex">
+        <div class="d-flex justify-content-center">
             <i class="fa-solid fa-graduation-cap m-2"></i>
             <h5 class="card-title">${intern.getRole()}</h5>
         </div>
