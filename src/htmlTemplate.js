@@ -76,8 +76,9 @@ const createTeamCards = (team) => {
       .map((intern) => createIntern(intern))
   );
 
+  const flattenedCardArray = htmlCardArray.flat();
   // return the htmlCardArray joined into a single string
-  return htmlCardArray.join("");
+  return flattenedCardArray.join("");
 };
 
 module.exports = (team) => {
