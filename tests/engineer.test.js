@@ -18,3 +18,14 @@ describe("Engineer subclass", () => {
     });
   });
 });
+
+describe("getGitHub() function", () => {
+  it("returns a string of a functioning HTML anchor tag that opens the user's github profile in a new tab", () => {
+    const bob = new Engineer("Bob", 22, "bob@gmail.com", "bobCodes");
+    const gitHubLink = bob.getGitHub();
+
+    expect(gitHubLink).toEqual(
+      `<a href="https://github.com/bobCodes" target="_blank">bobCodes<a>`
+    );
+  });
+});
