@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const chalk = require("chalk");
 const fs = require("fs");
 const path = require("path");
 
@@ -16,12 +17,12 @@ const team = [];
 const addEmployeeQuestion = [
   {
     type: "list",
-    message: "What type of team member would you like to add?",
+    message: "Would you like to add another team member? (Use the arrow keys.)",
     name: "employeeAdd",
     choices: [
       "Add an Engineer",
       "Add an Intern",
-      "I don't need to add any more team members.",
+      "I don't need to add another team member.",
     ],
   },
 ];
@@ -95,6 +96,11 @@ const internQuestions = [
 // to begin, pass "node index.js build-team" in the terminal
 function init() {
   if (process.argv[2] === "build-team") {
+    console.log(
+      chalk.magenta(
+        "Welcome to the team profile builder.\nAnswer the prompts that follow to automatically generate a profile webpage for your team."
+      )
+    );
     promptForManager();
   }
 }
@@ -103,6 +109,15 @@ init();
 function promptForManager() {
   // prompt with managerQuestions
   inquirer.prompt(managerQuestions).then((data) => {
+    // validate email
+    if (!data.email.includes("@") || !data.email.includes(".")) {
+      console.log(
+        chalk.red("Employee email must follow the format:\n___ @ ___ . ___")
+      );
+      promptForManager();
+      return;
+    }
+
     // create a new manager object using the user's input data
     const manager = new Manager(
       data.name,
@@ -122,6 +137,14 @@ function promptForEmployee() {
   inquirer.prompt(addEmployeeQuestion).then((data) => {
     switch (data.employeeAdd) {
       case "Add an Engineer":
+        // validate email
+        if (!data.email.includes("@") || !data.email.includes(".")) {
+          console.log(
+            chalk.red("Employee email must follow the format:\n___ @ ___ . ___")
+          );
+          promptForEmployee();
+          return;
+        }
         // prompt with engineerQuestions
         inquirer.prompt(engineerQuestions).then((data) => {
           // create new engineer object with user input data
@@ -140,6 +163,16 @@ function promptForEmployee() {
       case "Add an Intern":
         // prompt with internQuestions
         inquirer.prompt(internQuestions).then((data) => {
+          // validate email
+          if (!data.email.includes("@") || !data.email.includes(".")) {
+            console.log(
+              chalk.red(
+                "Employee email must follow the format:\n___ @ ___ . ___"
+              )
+            );
+            promptForEmployee();
+            return;
+          }
           // create new intern object with user input data
           const intern = new Intern(
             data.name,
@@ -155,7 +188,9 @@ function promptForEmployee() {
         break;
       default:
         console.log(
-          "Success!\nCheck the dist/ directory for your index.html file."
+          chalk.magenta(
+            "Success!\nCheck the dist/ directory for your index.html file."
+          )
         );
         renderNewHTML(team);
     }

@@ -2,57 +2,54 @@
 const createTeamCards = (team) => {
   // function to create a card for a manager
   const createManager = (manager) => {
-    return `
-<div class="card mt-3 shadow" style="width: 18rem">
-    <div class="card-body bg-primary text-light">
-        <h3 class="text-center" id="name">${manager.getName()}</h3>
-        <div class="d-flex justify-content-center">
-            <i class="fa-solid fa-mug-hot m-2"></i>
-            <h5 class="card-title">${manager.getRole()}</h5>
-        </div>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID#: ${manager.getId()}</li>
-        <li class="list-group-item">Email: ${manager.getEmail()}</li>
-        <li class="list-group-item">Office Phone: ${manager.getOfficeNumber()}</li>
-    </ul>
-</div>`;
+    return `<div class="card mt-3 shadow" style="width: 18rem">
+                    <div class="card-body bg-primary text-light">
+                        <h3 class="text-center" id="name">${manager.getName()}</h3>
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-mug-hot m-2"></i>
+                            <h5 class="card-title">${manager.getRole()}</h5>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID#: ${manager.getId()}</li>
+                        <li class="list-group-item">Email: ${manager.getEmail()}</li>
+                        <li class="list-group-item">Office Phone: ${manager.getOfficeNumber()}</li>
+                    </ul>
+                </div>`;
   };
   // function to create a card for an engineer
   const createEngineer = (engineer) => {
-    return `
-<div class="card mt-3 shadow" style="width: 18rem">
-    <div class="card-body bg-primary text-light">
-        <h3 class="text-center" id="name">${engineer.getName()}</h3>
-        <div class="d-flex justify-content-center">
-            <i class="fa-solid fa-glasses m-2"></i>
-            <h5 class="card-title">${engineer.getRole()}</h5>
-        </div>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID#: ${engineer.getId()}</li>
-        <li class="list-group-item">Email: ${engineer.getEmail()}</li>
-        <li class="list-group-item">GitHub: ${engineer.getGitHub()}</li>
-    </ul>
-</div>`;
+    return `<div class="card mt-3 shadow" style="width: 18rem">
+                    <div class="card-body bg-primary text-light">
+                        <h3 class="text-center" id="name">${engineer.getName()}</h3>
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-glasses m-2"></i>
+                            <h5 class="card-title">${engineer.getRole()}</h5>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID#: ${engineer.getId()}</li>
+                        <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+                        <li class="list-group-item">GitHub: ${engineer.getGitHub()}</li>
+                    </ul>
+                </div>`;
   };
   // function to create a card for an intern
   const createIntern = (intern) => {
-    return `
-<div class="card mt-3 shadow" style="width: 18rem">
-    <div class="card-body bg-primary text-light">
-        <h3 class="text-center" id="name">${intern.getName()}</h3>
-        <div class="d-flex justify-content-center">
-            <i class="fa-solid fa-graduation-cap m-2"></i>
-            <h5 class="card-title">${intern.getRole()}</h5>
-        </div>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID#: ${intern.getId()}</li>
-      <li class="list-group-item">Email: ${intern.getEmail()}</li>
-      <li class="list-group-item">School: ${intern.getSchool()}</li>
-    </ul>
-</div>`;
+    return `<div class="card mt-3 shadow" style="width: 18rem">
+                    <div class="card-body bg-primary text-light">
+                        <h3 class="text-center" id="name">${intern.getName()}</h3>
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-graduation-cap m-2"></i>
+                            <h5 class="card-title">${intern.getRole()}</h5>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">ID#: ${intern.getId()}</li>
+                      <li class="list-group-item">Email: ${intern.getEmail()}</li>
+                      <li class="list-group-item">School: ${intern.getSchool()}</li>
+                    </ul>
+                </div>`;
   };
   // empty array to contain all employee cards
   const htmlCardArray = [];
